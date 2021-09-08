@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>EXERCICE 1</title>
+
+</head>
+
+<body>
+
+    <div id="header_bg">
+        <div >
+            <header id="header">
+                <div id="center_title">
+
+                    <h1>GENERATEUR DE MOT DE PASSE</h1>
+                </div>
+                
+            </header>
+        </div>
+    </div>
+
+   
+
+    <form>
+      
+        <div id="taille_div">
+          <label id="taille_label">Nombre de caractère: </label>
+          <input type="text" id="taille_input" >
+        </div>
+      
+       <br>
+      
+      
+        <button type="button" class="button" onClick="generate(document.getElementById('taille_input').value)" ><span>Générer</span></button>
+
+
+    
+      </form>
+
+      <br>
+
+
+<div id= "mot_de_passe"> Aucun mot de passe générer </div>
+
+  
+
+<!-- code JS pour appeler le css de la page --> 
+
+
+<script type="text/javascript"> 
+
+console.log('ok');
+
+//variables
+const blanc = "#fff";
+
+// gestion du parametre du input
+let input = document.querySelector('input');
+input.size = "5";
+input.value = "5";
+
+//css titre
+var titre = document.getElementById("header_bg");
+titre.style.backgroundColor = '#292929';
+titre.style.width = "100%";
+
+//css header
+var head = document.getElementById("header");
+head.style.color = blanc;
+head.style.fontFamily = "'Lato', sans-serif";
+head.style.fontWeight = "bold";
+head.style.fontSize = "4rem";
+head.style.textAlign = "center";
+
+var center_title = document.getElementById("center_title");
+center_title.style.color = blanc;
+center_title.style.fontFamily = "'Lato', sans-serif";
+center_title.style.fontWeight = "bold";
+center_title.style.fontSize = "4rem";
+center_title.style.textAlign = "center";
+
+// selecteur sur le h1
+let h1 = document.querySelector('h1');
+h1.style.fontFamily = "'Lato', sans-serif";
+h1.style.fontWeight = "bold";
+h1.style.fontSize = "4rem";
+h1.style.textAlign = "center";
+
+
+// gestion de notre mini form
+let form_ = document.querySelector('form');
+form_.style.marginTop = "110px";
+form_.style.textAlign = "center";
+
+
+// label et input
+var taille_label = document.getElementById("taille_label");
+taille_label.style.fontSize= "x-large";
+
+var taille_input = document.getElementById("taille_input");
+taille_input.style.height= "30px";
+taille_input.style.marginBottom= "30px";
+
+
+//manupulation du button
+let button_ = document.querySelector('button');
+button_.style.mdisplay = "inline-block";
+button_.style.borderRadius = "4px";
+button_.style.backgroundColor = "#1ad37d";
+button_.style.color = blanc;
+button_.style.textAlign = "center";
+button_.style.fontSize = "28px";
+button_.style.padding = "20px;"
+button_.style.width = "200px";
+button_.style.transition = "all 0.5s";
+button_.style.cursor = "pointer";
+button_.style.margin = "auto";
+button_.style.verticalAlign = "middle";
+
+
+
+
+
+//mot de passe affichage
+
+var pwd = document.getElementById("mot_de_passe");
+pwd.style.width = "600px";
+pwd.style.paddingTop = "10px";
+pwd.style.paddingBottom = "10px";
+pwd.style.border = "3px solid #A0A0A0";
+pwd.style.textAlign = "center";
+
+pwd.style.background = "#C0C0C0";
+pwd.style.color = "green";
+pwd.style.fontWeight = "bolder";
+
+pwd.style.margin = "auto";
+
+
+
+//GENERATEUR DE MOT DE PASSE
+
+
+function getRandomInt(min,max) {
+   
+        return random = Math.random() * (max - min) + min; 
+     }
+    //fonction shuffle
+
+    String.prototype.shuffle = function () {
+    var a = this.split(""),
+        n = a.length;
+
+    for(var i = n - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var tmp = a[i];
+        a[i] = a[j];
+        a[j] = tmp;
+    }
+    return a.join("");
+}
+
+
+
+function generate(taille) {
+
+    /* declaration   */
+
+    const num = "0123456789"; //valeur numerique 
+    const alpha_min = "abcdefghijklmnopqrstuvwxyz"; 
+    const alpha_maj = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; 
+    const car_spe = "`~!@#$%^&*()-_=+[{]}\\|;:'\",<.>/? "; //caractere speciaux
+    
+    const chaine_alph_num= num + alpha_min + alpha_maj+ car_spe;
+
+  
+
+    if(taille <= 4 ){
+
+        //inserer la valeur dans le html
+        var div = document.getElementById('mot_de_passe');
+        div.innerHTML = "Attention 5 caractère Au minimum ";
+        
+
+    }else{
+        
+        mdp='';
+   
+
+
+    var nbre_num = getRandomInt(1,parseInt(taille/4));
+    var nbre_alpha_min = getRandomInt(1,parseInt(taille/4));
+    var nbre_alpha_maj = getRandomInt(1,parseInt(taille/4));
+    var nbre_car_spe = getRandomInt(1,parseInt(taille/4));
+
+    var testeur = nbre_num+nbre_alpha_min+nbre_alpha_maj+nbre_car_spe;
+
+    if(taille - testeur == 0){
+
+        var nbre_chaine_alph_num = 0 ;
+
+    }else{
+
+
+        var nbre_chaine_alph_num = taille - testeur ;
+
+
+    }
+
+    /* choix du caractère speciale*/
+    special=Math.floor(Math.random() * (car_spe.length-1));
+
+
+
+        /* on insère aléatoire */
+        for (var n = 0; n < nbre_num; n++) mdp += num.charAt(Math.floor(Math.random() * num.length));
+        for (var amin = 0; amin < nbre_alpha_min; amin++) mdp += alpha_min.charAt(Math.floor(Math.random() * alpha_min.length));
+        for (var amaj = 0; amaj < nbre_alpha_maj; amaj++) mdp += alpha_maj.charAt(Math.floor(Math.random() * alpha_maj.length));
+        for (var sp = 0; sp < nbre_car_spe; sp++) mdp += car_spe.charAt(Math.floor(Math.random() * car_spe.length));
+        for (var ch = 0; ch < nbre_chaine_alph_num; ch++) mdp += chaine_alph_num.charAt(Math.floor(Math.random() * chaine_alph_num.length));
+   
+
+          //inserer la valeur dans le html
+        var div = document.getElementById('mot_de_passe');
+        div.innerHTML = mdp.shuffle();
+    }
+      
+    
+
+    
+}
+
+
+
+
+
+
+
+
+  
+
+
+
+
+</script>  
+
+</body>
+
+</html>

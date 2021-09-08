@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>EXERCICE 2</title>
+
+</head>
+
+<body>
+
+    <div id="header_bg">
+        <div >
+            <header id="header">
+                <div id="center_title">
+
+                    <h1>CONVERTISSEUR: °F - °C</h1>
+                </div>
+                
+            </header>
+        </div>
+    </div>
+
+   
+
+    <form>
+      
+        <div id="taille_div">
+          <label id="f_label">Dégré en Fahrenheit: </label>
+          <input type="text" id="f_input" >
+            <br>
+
+          <label id="c_label">Dégré en Celsius: </label>
+          <input type="text" id="c_input" >
+        </div>
+      
+       <br>      
+      
+       <button id="btn_c"  type="button" class="button" onClick="Fahrenheit_Celsius(document.getElementById('f_input').value)" ><span>Convertir (°F en °C)</span></button>
+
+       <div id= "aff_c"> </div>
+        <br>
+       <button id="btn_f" type="button" class="button" onClick="Celsius_Fahrenheit(document.getElementById('c_input').value)" ><span>onvertir (°C en °F)</span></button>
+
+       <div id= "aff_f"> </div>
+
+
+      </form>
+
+      <br>
+
+  
+
+<!-- code JS pour appeler le css de la page --> 
+
+<script type="text/javascript"> 
+
+console.log('ok');
+
+//variables
+const blanc = "#fff";
+
+//css titre
+var titre = document.getElementById("header_bg");
+titre.style.backgroundColor = '#292929';
+titre.style.width = "100%";
+
+//css header
+var head = document.getElementById("header");
+head.style.color = blanc;
+head.style.fontFamily = "'Lato', sans-serif";
+head.style.fontWeight = "bold";
+head.style.fontSize = "4rem";
+head.style.textAlign = "center";
+
+var center_title = document.getElementById("center_title");
+center_title.style.color = blanc;
+center_title.style.fontFamily = "'Lato', sans-serif";
+center_title.style.fontWeight = "bold";
+center_title.style.fontSize = "4rem";
+center_title.style.textAlign = "center";
+
+// selecteur sur le h1
+let h1 = document.querySelector('h1');
+h1.style.fontFamily = "'Lato', sans-serif";
+h1.style.fontWeight = "bold";
+h1.style.fontSize = "4rem";
+h1.style.textAlign = "center";
+
+
+// gestion de notre mini form
+let form_ = document.querySelector('form');
+form_.style.marginTop = "110px";
+form_.style.textAlign = "center";
+
+
+// label et input
+var f_label = document.getElementById("f_label");
+f_label.style.fontSize= "x-large";
+f_label.style.marginLeft = "30px";
+
+var f_input = document.getElementById("f_input");
+f_input.style.height= "30px";
+f_input.style.marginBottom= "30px";
+
+var c_label = document.getElementById("c_label");
+c_label.style.fontSize= "x-large";
+c_label.style.marginRight = "30px";
+c_label.style.marginLeft = "30px";
+
+
+
+var c_input = document.getElementById("c_input");
+c_input.style.height= "30px";
+c_input.style.marginBottom= "30px";
+
+//button
+let button_1 = document.getElementById('btn_f');
+button_1.style.marginBottom = "10px";
+
+button_1.style.padding = "40px;"
+
+button_1.style.cursor = "pointer";
+
+let button_2 = document.getElementById('btn_c');
+button_2.style.marginBottom = "10px";
+
+button_2.style.padding = "40px;"
+
+button_2.style.cursor = "pointer";
+
+
+
+// fonction convertisseur
+function Celsius_Fahrenheit(celsius) 
+{
+  var c = celsius;
+  var c_convertir_f = c * 9 / 5 + 32;
+
+  document.getElementById('f_input').value =  c_convertir_f ;
+
+  var div_f = document.getElementById('aff_f');
+  div_f.innerHTML = c_convertir_f + " °F";;
+
+}
+
+
+function Fahrenheit_Celsius(fahrenheit) 
+{
+  var f = fahrenheit;
+  var f_convertir_c = (f - 32) * 5 / 9;
+
+  document.getElementById('c_input').value =  f_convertir_c;
+
+
+  var div_c = document.getElementById('aff_c');
+  div_c.innerHTML = f_convertir_c + "° C";
+} 
+
+
+</script>  
+
+</body>
+
+</html>

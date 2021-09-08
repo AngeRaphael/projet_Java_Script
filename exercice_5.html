@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>EXERCICE 5</title>
+
+<style>
+
+    #navigation li {
+    background: white ;
+    color: #fff ;
+    border: 1px solid #600 ;
+    margin-bottom: 1px ;
+    }
+
+    #navigation li a {
+    display: block ;
+    background: green ;
+    color: #fff ;
+    font: 1em "Trebuchet MS",Arial,sans-serif ;
+    line-height: 1em ;
+    text-align: center ;
+    text-decoration: none ;
+    padding: 12px 0 ;
+
+    }
+
+</style>
+
+</head>
+
+
+<body>
+
+    <div id="header_bg">
+        <div >
+            <header id="header">
+                <div id="center_title">
+
+                    <h1>MENU BUGER</h1>
+                </div>
+                
+            </header>
+        </div>
+    </div>
+
+    <form>
+      
+    
+       <br>
+          <!-- formulaire menu--> 
+
+          <ul id="navigation">
+            <li><a id="myBtn_1" href="#" title="aller à la section 1"><img src="./image_exo_5/burger_1.jpeg" alt="burger_1" width="50px" height="30px"/> GARIBALDI</a></li>
+            <li><a id="myBtn_2" href="#" title="aller à la section 2"><img src="./image_exo_5/burger_2.jpeg" alt="burger_2" width="50px" height="30px"/> CHIMANGO</a></li>
+            <li><a id="myBtn_3"  href="#" title="aller à la section 3"><img src="./image_exo_5/burger_3.jpeg" alt="burger_3" width="50px" height="30px"/> CAMPEREA</a></li>
+            <li><a id="myBtn_4" href="#" title="aller à la section 4"><img src="./image_exo_5/bueger_4.jpeg" alt="burger_4" width="50px" height="30px"/> BORCHETI</a></li>
+            <li><a id="myBtn_5" href="#" title="aller à la section 5"><img src="./image_exo_5/burger_5.jpeg" alt="burger_5" width="50px" height="30px"/> CHARRUA</a></li>
+
+          </ul>
+
+      </form>
+
+      <br>
+      <br>
+
+            <!-- Notre modal-->
+            <div id="myModal" class="modal">
+
+                <!-- le contenu de notre modal-->
+                <div class="modal-content">
+                
+                    <div id="img"><img id="img_1"></div>
+                    <br>
+                    <div id="item"></div>
+        
+                </div>
+        
+                </div>
+
+
+
+
+  
+
+<!-- code JS pour appeler le css de la page --> 
+
+
+<script type="text/javascript"> 
+
+//variables
+const blanc = "#fff";
+const noir = "#000";
+
+
+
+
+//css js modal 
+
+var navigation = document.getElementById("navigation");
+navigation.style.width = '200px';
+navigation.style.listStyle = "none";
+navigation.style.margin = "auto";
+navigation.style.padding = "4px";
+
+
+
+//css titre
+var titre = document.getElementById("header_bg");
+titre.style.backgroundColor = '#292929';
+titre.style.width = "100%";
+
+//css header
+var head = document.getElementById("header");
+head.style.color = blanc;
+head.style.fontFamily = "'Lato', sans-serif";
+head.style.fontWeight = "bold";
+head.style.fontSize = "4rem";
+head.style.textAlign = "center";
+
+var center_title = document.getElementById("center_title");
+center_title.style.color = blanc;
+center_title.style.fontFamily = "'Lato', sans-serif";
+center_title.style.fontWeight = "bold";
+center_title.style.fontSize = "4rem";
+center_title.style.textAlign = "center";
+
+
+// selecteur sur le h1
+let h1 = document.querySelector('h1');
+h1.style.fontFamily = "'Lato', sans-serif";
+h1.style.fontWeight = "bold";
+h1.style.fontSize = "4rem";
+h1.style.textAlign = "center";
+
+
+// gestion de notre mini form
+let form_ = document.querySelector('form');
+form_.style.marginTop = "110px";
+form_.style.textAlign = "center";
+
+
+
+
+var btn_1 = document.getElementById("myBtn_1");
+var btn_2 = document.getElementById("myBtn_2");
+var btn_3 = document.getElementById("myBtn_3");
+var btn_4 = document.getElementById("myBtn_4");
+var btn_5= document.getElementById("myBtn_5");
+
+
+
+var modal = document.getElementsByClassName("modal")[0];
+modal.style.display = "none";
+modal.style.position = "fixed";
+modal.style.zIndex = "1";
+modal.style.paddingTop = "100px";
+modal.style.left = "0";
+modal.style.top = "0";
+modal.style.width = "100%";
+modal.style.height = "100%";
+modal.style.overflow = "auto";
+modal.style.backgroundColor = "rgb(0,0,0)";
+modal.style.backgroundColor = "rgba(0,0,0,0.4)";
+
+/* Contenu Modal */
+
+var modal_1 = document.getElementsByClassName("modal-content")[0];
+modal_1.style.backgroundColor = "#fefefe";
+modal_1.style.margin = "auto";
+modal_1.style.padding = "20px";
+modal_1.style.border = "1px solid #888";
+modal_1.style.width = "30%";
+
+
+// si l'utilisateur clique n'importe où en dehors de la modale, la fermer.
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+
+
+btn_1.onclick = function() {
+
+    modal.style.display = "block";
+
+    var img_1 = document.getElementById('img_1');
+    img_1.src = "./image_exo_5/burger_1.jpeg";
+    var img = document.getElementById('img');
+    img.style.position = "relative";
+    img.style.textAlign = "center";
+
+
+    var item = document.getElementById('item');
+    item.style.fontWeight = "bolder";
+    item.innerHTML = "GARIBALDI";
+
+  
+
+    var delayInMilliseconds = 1000; //1 second
+
+    setTimeout(function() {
+        fermer_modal();
+    }, delayInMilliseconds);
+
+  console.log('burger 1');
+
+}
+
+function  fermer_modal(){
+
+    modal.style.display = "block";
+
+    var img_1 = document.getElementById('img_1');
+    img_1.src = "./image_exo_5/burger_1.jpeg";
+    var img = document.getElementById('img');
+    img.style.position = "relative";
+    img.style.textAlign = "center";
+
+
+    var item = document.getElementById('item');
+    item.style.fontWeight = "bolder";
+    item.innerHTML = "GARIBALDI";
+
+  
+
+    var delayInMilliseconds = 1000; //1 second
+
+    setTimeout(function() {
+        fermer_modal();
+    }, delayInMilliseconds);
+
+modal.style.display = "none";
+
+}
+
+btn_2.onclick = function() {
+    modal.style.display = "block";
+
+    var img_1 = document.getElementById('img_1');
+    img_1.src = "./image_exo_5/burger_2.jpeg";
+    var img = document.getElementById('img');
+    img.style.position = "relative";
+    img.style.textAlign = "center";
+
+
+    var item = document.getElementById('item');
+    item.style.fontWeight = "bolder";
+    item.innerHTML = "CHIMANGO";
+
+  
+
+    var delayInMilliseconds = 1000; //1 second
+
+    setTimeout(function() {
+        
+        fermer_modal();
+    }, delayInMilliseconds);
+    console.log('burger 2');
+}
+
+btn_3.onclick = function() {
+    modal.style.display = "block";
+
+    var img_1 = document.getElementById('img_1');
+    img_1.src = "./image_exo_5/burger_3.jpeg";
+    var img = document.getElementById('img');
+    img.style.position = "relative";
+    img.style.textAlign = "center";
+
+
+    var item = document.getElementById('item');
+    item.style.fontWeight = "bolder";
+    item.innerHTML = "CAMPEREA";
+
+  
+
+    var delayInMilliseconds = 1000; //1 second
+
+    setTimeout(function() {
+        fermer_modal();
+    }, delayInMilliseconds);
+    console.log('burger 3');
+}
+
+btn_4.onclick = function() {
+    modal.style.display = "block";
+
+    var img_1 = document.getElementById('img_1');
+    img_1.src = "./image_exo_5/bueger_4.jpeg";
+    var img = document.getElementById('img');
+    img.style.position = "relative";
+    img.style.textAlign = "center";
+
+
+    var item = document.getElementById('item');
+    item.style.fontWeight = "bolder";
+    item.innerHTML = "BORCHETI";
+
+  
+
+    var delayInMilliseconds = 1000; //1 second
+
+    setTimeout(function() {
+        fermer_modal();
+    }, delayInMilliseconds);
+
+
+    console.log('burger 4');
+}
+
+btn_5.onclick = function() {
+    modal.style.display = "block";
+
+    var img_1 = document.getElementById('img_1');
+    img_1.src = "./image_exo_5/burger_5.jpeg";
+    var img = document.getElementById('img');
+    img.style.position = "relative";
+    img.style.textAlign = "center";
+
+
+    var item = document.getElementById('item');
+    item.style.fontWeight = "bolder";
+    item.innerHTML = "CHARRUA";
+
+  
+
+    var delayInMilliseconds = 1000; //1 second
+
+    setTimeout(function() {
+        fermer_modal();
+    }, delayInMilliseconds);
+    console.log('burger 5');
+}
+
+   
+            
+
+
+</script>  
+
+</body>
+
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>EXERCICE 3</title>
+
+</head>
+
+<body>
+
+    <div id="header_bg">
+        <div >
+            <header id="header">
+                <div id="center_title">
+
+                    <h1>GENERATEUR DE CITATION</h1>
+                </div>
+                
+            </header>
+        </div>
+    </div>
+
+   
+
+    <form>
+      
+    
+       <br>
+      
+        <!-- Declencheur de notre modale -->
+
+        <button type="button" id="myBtn" class="button" ><span>Générer</span></button>
+
+
+
+        <!-- Notre modal-->
+        <div id="myModal" class="modal">
+
+        <!-- le contenu de notre modal-->
+        <div class="modal-content">
+
+            <span class="close">&times;</span>
+
+            <div id="auteur"></div>
+            <br>
+            <div id="citation"></div>
+
+        </div>
+
+        </div>
+            
+      </form>
+
+      <br>
+
+
+
+  
+
+<!-- code JS pour appeler le css de la page --> 
+
+
+<script type="text/javascript"> 
+
+console.log('ok');
+
+//variables
+const blanc = "#fff";
+
+
+//css titre
+var titre = document.getElementById("header_bg");
+titre.style.backgroundColor = '#292929';
+titre.style.width = "100%";
+
+//css header
+var head = document.getElementById("header");
+head.style.color = blanc;
+head.style.fontFamily = "'Lato', sans-serif";
+head.style.fontWeight = "bold";
+head.style.fontSize = "4rem";
+head.style.textAlign = "center";
+
+var center_title = document.getElementById("center_title");
+center_title.style.color = blanc;
+center_title.style.fontFamily = "'Lato', sans-serif";
+center_title.style.fontWeight = "bold";
+center_title.style.fontSize = "4rem";
+center_title.style.textAlign = "center";
+
+var auteur_ = document.getElementById('auteur');
+auteur_.style.color = "green" ;
+auteur_.style.fontWeight = "bolder";
+
+// selecteur sur le h1
+let h1 = document.querySelector('h1');
+h1.style.fontFamily = "'Lato', sans-serif";
+h1.style.fontWeight = "bold";
+h1.style.fontSize = "4rem";
+h1.style.textAlign = "center";
+
+
+// gestion de notre mini form
+let form_ = document.querySelector('form');
+form_.style.marginTop = "110px";
+form_.style.textAlign = "center";
+
+//manupulation du button
+let button_ = document.querySelector('button');
+button_.style.mdisplay = "inline-block";
+button_.style.borderRadius = "4px";
+button_.style.backgroundColor = "#1ad37d";
+button_.style.color = blanc;
+button_.style.textAlign = "center";
+button_.style.fontSize = "28px";
+button_.style.padding = "20px;"
+button_.style.width = "200px";
+button_.style.transition = "all 0.5s";
+button_.style.cursor = "pointer";
+button_.style.margin = "auto";
+button_.style.verticalAlign = "middle";
+
+
+
+// gestion de notre modale
+
+var modal = document.getElementById("myModal");
+
+
+
+// l'élément <span> qui ferme la modale
+var span = document.getElementsByClassName("close")[0];
+// lorsque l'utilisateur clique sur <span> (x), fermer la modale
+  span.onclick = function() {
+  modal.style.display = "none";
+}
+
+
+//  le bouton qui ouvre la modale
+var btn = document.getElementById("myBtn");
+// Lorsque l'utilisateur clique sur le bouton, ouvrez la modale.  
+btn.onclick = function() {
+  modal.style.display = "block";
+
+
+  //dictionnaire de citation
+    var citation = [
+
+        {key:"Bernard Pivot", value:"“Je connais peu d'humiliations qui résistent à un nom sur une liste de best-sellers.”"},
+        {key:"Pierre Dac", value:"“La liste des problèmes sociaux qui iront de mal en pis avant de s’arranger risque fort de s’allonger avant de diminuer.”"},
+        {key:"Robert Orben", value:"“Tous les jours, je consulte la liste des Américains les plus riches. Si je n’y suis pas, je vais travailler.”"},
+        {key:"Ambrose Bierce", value:"“Généalogie. Liste des ascendants de quelqu'un, à partir d'un lointain ancêtre qui ne se souciait guère en son temps d'établir la sienne.”"},
+        {key:"Jean-Jacques Schuhl", value:"“La liste est longue des acteurs dont les rôles ont été prémonitoires ou cause des choses qui leur sont arrivées. Les rôles souvent vampirisent celui qui les tient.”"},
+        {key:"Peter Jackson", value:"“Je n’ai pas de liste de choses à réaliser, je ne sais pas ce que je ferai demain, et c’est voulu.”"},
+        {key:"Roger-Pol Droit ", value:"“Percevoir l’esprit de chacune des religions est plus important que de dresser la liste des fêtes ou des règles alimentaires.”"},
+        {key:"Julia Roberts ", value:"“Ce que j'adore dans ma nomination aux Oscars, c'est l'idée que je figurerai sur cette liste jusqu'à la fin des temps.”"}
+    
+    ];
+
+//selectionner une citation au hasard
+var citation_select =  parseInt(getRandomInt(1, citation.length));
+
+var div_1 = document.getElementById('auteur');
+div_1.innerHTML = citation[citation_select].key;
+
+var div_2 = document.getElementById('citation');
+div_2.innerHTML = citation[citation_select].value;
+
+console.log("Auteur: " + citation[citation_select].key);
+console.log("Citation: " + citation[citation_select].value);
+
+console.log(parseInt(getRandomInt(1, citation.length)));
+
+}
+
+//fonction random
+function getRandomInt(min,max) {
+        return random = Math.random() * (max - min) + min; 
+}
+
+
+
+// si l'utilisateur clique n'importe où en dehors de la modale, la fermer.
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+
+var modal = document.getElementsByClassName("modal")[0];
+modal.style.display = "none";
+modal.style.position = "fixed";
+modal.style.zIndex = "1";
+modal.style.paddingTop = "100px";
+modal.style.left = "0";
+modal.style.top = "0";
+modal.style.width = "100%";
+modal.style.height = "100%";
+modal.style.overflow = "auto";
+modal.style.backgroundColor = "rgb(0,0,0)";
+modal.style.backgroundColor = "rgba(0,0,0,0.4)";
+
+/* Contenu Modal */
+
+var modal_1 = document.getElementsByClassName("modal-content")[0];
+modal_1.style.backgroundColor = "#fefefe";
+modal_1.style.margin = "auto";
+modal_1.style.padding = "20px";
+modal_1.style.border = "1px solid #888";
+modal_1.style.width = "80%";
+
+var modal_2 = document.getElementsByClassName("close")[0];
+modal_2.style.color = "#aaaaaa";
+modal_2.style.float = "right";
+modal_2.style.fontSize = "28px";
+modal_2.style.fontWeight = "bold";
+modal_2.style.cursor = "pointer";
+
+
+
+
+</script>  
+
+</body>
+
+</html>

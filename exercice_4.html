@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>EXERCICE 4</title>
+
+</head>
+
+<body>
+
+    <div id="header_bg">
+        <div >
+            <header id="header">
+                <div id="center_title">
+
+                    <h1>MODE JOUR & NUIT</h1>
+                </div>
+                
+            </header>
+        </div>
+    </div>
+
+    <form>
+      
+    
+       <br>
+      
+        <!-- Declencheur de notre modale -->
+        <button type="button" id="myBtn" class="button"><span>changer mode</span></button>
+            
+      </form>
+
+      <br>
+      <br>
+
+      <h3 id="jour"> Le mode jour est activé</h3>
+      <h3 id="nuit"> Le mode nuit est activé</h3>
+
+
+
+
+  
+
+<!-- code JS pour appeler le css de la page --> 
+
+
+<script type="text/javascript"> 
+
+//variables
+const blanc = "#fff";
+const noir = "#000";
+
+
+//css titre
+var titre = document.getElementById("header_bg");
+titre.style.backgroundColor = '#292929';
+titre.style.width = "100%";
+
+//css header
+var head = document.getElementById("header");
+head.style.color = blanc;
+head.style.fontFamily = "'Lato', sans-serif";
+head.style.fontWeight = "bold";
+head.style.fontSize = "4rem";
+head.style.textAlign = "center";
+
+var center_title = document.getElementById("center_title");
+center_title.style.color = blanc;
+center_title.style.fontFamily = "'Lato', sans-serif";
+center_title.style.fontWeight = "bold";
+center_title.style.fontSize = "4rem";
+center_title.style.textAlign = "center";
+
+
+// selecteur sur le h1
+let h1 = document.querySelector('h1');
+h1.style.fontFamily = "'Lato', sans-serif";
+h1.style.fontWeight = "bold";
+h1.style.fontSize = "4rem";
+h1.style.textAlign = "center";
+
+
+// gestion de notre mini form
+let form_ = document.querySelector('form');
+form_.style.marginTop = "110px";
+form_.style.textAlign = "center";
+
+//manupulation du button
+let button_ = document.querySelector('button');
+button_.style.mdisplay = "inline-block";
+button_.style.borderRadius = "4px";
+button_.style.backgroundColor = "#1ad37d";
+button_.style.color = blanc;
+button_.style.textAlign = "center";
+button_.style.fontSize = "28px";
+button_.style.padding = "20px;"
+button_.style.width = "200px";
+button_.style.transition = "all 0.5s";
+button_.style.cursor = "pointer";
+button_.style.margin = "auto";
+button_.style.verticalAlign = "middle";
+
+//contenu de la page
+
+var jour = document.getElementById("jour");
+jour.style.textAlign = "center";
+
+var nuit = document.getElementById("nuit");
+nuit.style.textAlign = "center";
+nuit.style.display = "none";
+
+var btn = document.getElementById("myBtn");
+
+var val_bool = true;
+
+// Lorsque l'utilisateur clique sur le bouton.  
+btn.onclick = function() {
+
+    console.log("Changement de mode");
+    
+
+    if(val_bool){
+
+        console.log('ok_1');
+
+        val_bool = false;
+
+
+        //manupulation du button
+        let button_ = document.querySelector('button');
+      
+        button_.style.backgroundColor = "gray";
+        button_.style.color = noir;
+        
+
+        //css titre
+        var titre = document.getElementById("header_bg");
+        titre.style.backgroundColor = 'rgb(224 106 49)';
+
+        //css header
+        var head = document.getElementById("header");
+        head.style.color = blanc;
+
+
+        var center_title = document.getElementById("center_title");
+        center_title.style.color = blanc;
+
+        let body = document.querySelector('body');
+    
+        body.style.backgroundColor = noir;
+        body.style.color = blanc;
+     
+
+        var jour = document.getElementById("jour");
+        jour.style.display = "none";
+
+        var nuit = document.getElementById("nuit");
+        nuit.style.display = "block";
+        
+
+    }else{
+
+        console.log('ok_2');
+
+        val_bool = true;
+
+
+        //manupulation du button
+        let button_ = document.querySelector('button');
+       
+        button_.style.backgroundColor = "#1ad37d";
+        button_.style.color = blanc;
+
+        //css titre
+        var titre = document.getElementById("header_bg");
+        titre.style.backgroundColor = '#292929';
+      
+
+        //css header
+        var head = document.getElementById("header");
+        head.style.color = blanc;
+
+
+        let body = document.querySelector('body');
+        body.style.backgroundColor = blanc;
+        body.style.color = noir;
+                
+        var jour = document.getElementById("jour");
+        jour.style.display = "block";
+
+        var nuit = document.getElementById("nuit");
+        nuit.style.display = "none";
+
+
+    }
+
+}
+
+
+
+</script>  
+
+</body>
+
+</html>
